@@ -1,0 +1,84 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.3.72'
+        springBootVersion = '2.3.2.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+    }
+}
+
+group("com.bungeerope.bungy")
+version("1.0-SNAPSHOT")
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+repositories {
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+    maven { url "https://repo.spring.io/plugins-release" }
+    maven { url "https://jitpack.io" }
+}
+
+// 子项目配置
+subprojects {
+    apply plugin: 'kotlin'
+    apply plugin: 'maven'
+
+    jar { enabled = true }
+    bootJar { enabled = false }
+
+    ext {
+        kotlinVersion = '1.3.72'
+        springBootVersion = '2.3.2.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+
+    dependencies {
+        testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+        maven { url "https://jitpack.io" }
+    }
+}

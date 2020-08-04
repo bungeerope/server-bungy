@@ -1,0 +1,17 @@
+group("com.bungeerope.bungy")
+version("1.0-SNAPSHOT")
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    compile('org.springframework.boot:spring-boot-starter')
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+}
+
+jar {
+    baseName="bungy-common"
+}
