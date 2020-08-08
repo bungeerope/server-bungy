@@ -11,3 +11,6 @@ rootProject.name = 'server-bungy'
 include("web")
 include("common")
 include("service")
+include('dao')
+include('core')
+
