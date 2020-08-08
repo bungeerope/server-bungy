@@ -1,4 +1,4 @@
-group("com.bungeerope.bungy")
+group("org.bungee.rope.bungy")
 version("1.0-SNAPSHOT")
 
 repositories {
