@@ -71,10 +71,12 @@ subprojects {
     }
 
     dependencies {
-        compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+        compile("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
         compile('org.springframework.boot:spring-boot-starter')
         compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-        compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+        compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+        compileOnly('org.projectlombok:lombok:1.18.12')
+
         testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     }
 
